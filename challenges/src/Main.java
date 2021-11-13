@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Main {
     public static void task1(){
         int x = 0;
@@ -51,7 +53,58 @@ public class Main {
     public static double celsiusToFahrenheit(double celsius){
         return (celsius * 9/5) + 32 ;
     }
+    public static void numberToTime(int number){
+        if(number >= 60){
+            int hour = number/60;
+            System.out.printf("%d %s", hour, hour == 1? "hour": "hours");
+        }
+        int minutes = number % 60;
+        if(minutes != 0) {
+            System.out.printf("%s %d %s%n", number >= 60 ? "," : "",minutes,minutes==1?"minute":"minutes");
+        }
+    }
 
+    public static void checkVowels(String word ){
+        String[] vowels = new String[] {"a","e","i","o","u"};
+        Stack<String> results = new Stack<>();
+
+        for(String letter: word.split("")) {
+            for (int index = 0; index < vowels.length; index++) {
+                if (letter.toLowerCase().equals(vowels[index]) && !(results.contains(letter.toLowerCase()))) {
+                    results.push(letter.toLowerCase());
+                }
+            }
+        }
+        System.out.printf("Vowels:");
+        for(int index = 0; index < results.size(); index++){
+           System.out.printf(" %s",results.elementAt(index));
+           if(index != results.size()-1){
+               System.out.printf(",");
+           }
+        }
+    }
+    public static void commonLetters(String word1, String word2){
+        Stack<String> commonWords = new Stack<>();
+        for(int index1 =0; index1 < word1.length();index1++){
+            for(int index2 = 0; index2<word2.length();index2++){
+                String letter1 = word1.split("")[index1].toLowerCase();
+                String letter2 = word2.split("")[index2].toLowerCase();
+                if(letter1.equals(letter2) && !commonWords.contains(letter1)){
+                    commonWords.push(letter1);
+                }
+
+            }
+        }
+        System.out.printf("%nCommon words:");
+        for(int index = 0; index < commonWords.size(); index++){
+            System.out.printf(" %s",commonWords.elementAt(index));
+            if(index != commonWords.size()-1){
+                System.out.printf(",");
+            }
+        }
+
+
+    }
 
 
     public static void main(String[] args) {
@@ -63,5 +116,8 @@ public class Main {
         maximum(3,2,3,5,4,5);
         fahrenheitToCelsius(86);
         celsiusToFahrenheit(150);
+        numberToTime(133);
+        checkVowels("Umuzi");
+        commonLetters("house", "computers");
     }
 }
