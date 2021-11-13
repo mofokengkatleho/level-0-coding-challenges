@@ -45,6 +45,12 @@ public class Main {
         }
         return highest;
     }
+    public static double fahrenheitToCelsius(double fahrenheit){
+        return (fahrenheit-32) * 5/9;
+    }
+    public static double celsiusToFahrenheit(double celsius){
+        return (celsius * 9/5) + 32 ;
+    }
 
 
 
@@ -55,5 +61,7 @@ public class Main {
         evenOrOdd(27);
         triangleArea(3,5,4);
         maximum(3,2,3,5,4,5);
+        fahrenheitToCelsius(86);
+        celsiusToFahrenheit(150);
     }
 }
