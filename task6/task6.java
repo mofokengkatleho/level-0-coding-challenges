@@ -1,6 +1,6 @@
 public class task6 {
     public static int maximum(int... args) {
-        int highest = -2147483648;
+        int highest = args[0];
 
         for (int arg : args) {
             if (arg > highest)
@@ -10,7 +10,7 @@ public class task6 {
     }
 
     public static void main(String[] args) {
-        maximum(3, 2, 3, 5, 4, 5);
+        maximum(4, 6, 7, 5, 8, 7);
 
     }
 }
